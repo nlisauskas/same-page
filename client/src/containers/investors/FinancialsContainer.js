@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Property from '../../components/Property'
 
-class PropertiesContainer extends Component {
+class FinancialsContainer extends Component {
     constructor(props){
         super(props)
         this.state = {
-            properties: []
+            financials: []
         }
     }
     componentDidMount() {
-        axios.get('http://localhost:3001/api/v1/properties.json')
+        axios.get('http://localhost:3001/api/v1/financials.json')
         .then(response => {
             console.log(response)
             this.setState({
-                properties: response.data
+                financials: response.data
             })
         })
         .catch(error => console.log(error))
     }
     render() {
         return (
-            <div className="properties-container">
-            {this.state.properties.map( property => {
-         return (<Property property={property} key={property.id} />)
-     })}
+            <div className="financials-container">
+              <p>Iterate through properties and show zestimate, cash flow to date, projected monthly cash flow, remaining months on mortgage, ROI if sold today, etc.</p>
+              <p>Total assets, total liabilities, net worth in real estate investments.</p>
+              <p>Charts showing all types of finances related to investor's properties.</p>
+              <p>Expense Management Section</p>
             </div>
         )
     }
 }
-export default PropertiesContainer;
+export default FinancialsContainer;

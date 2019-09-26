@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Property from '../../components/Property'
+import Payment from '../../components/investors/Payment'
 
-class PropertiesContainer extends Component {
+class PaymentsContainer extends Component {
     constructor(props){
         super(props)
         this.state = {
-            properties: []
+            payments: []
         }
     }
     componentDidMount() {
-        axios.get('http://localhost:3001/api/v1/properties.json')
+        axios.get('http://localhost:3001/api/v1/payments.json')
         .then(response => {
             console.log(response)
             this.setState({
-                properties: response.data
+                payments: response.data
             })
         })
         .catch(error => console.log(error))
     }
     render() {
         return (
-            <div className="properties-container">
-            {this.state.properties.map( property => {
-         return (<Property property={property} key={property.id} />)
+            <div className="payments-container">
+            {this.state.payments.map( payment => {
+         return (<Payment payment={payment} key={payment.id} />)
      })}
             </div>
         )
     }
 }
-export default PropertiesContainer;
+export default PaymentsContainer;
