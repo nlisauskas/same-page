@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Project from '../../components/investors/Project'
+import Project from '../../components/tenants/Project'
 
 class ProjectsContainer extends Component {
     constructor(props){
@@ -22,7 +22,7 @@ class ProjectsContainer extends Component {
     render() {
         return (
             <div className="projects-container">
-            <h2>Investor Maintenance View</h2>
+            <h2>Tenant Maintenance View</h2>
             {this.state.projects.map( project => {
          return (<Project project={project} key={project.id} />)
      })}

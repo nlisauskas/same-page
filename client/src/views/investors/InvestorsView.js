@@ -5,7 +5,9 @@ import TenantsContainer from '../../containers/investors/TenantsContainer'
 import ProfileContainer from '../../containers/investors/ProfileContainer'
 import ProjectsContainer from '../../containers/investors/ProjectsContainer'
 import PaymentsContainer from '../../containers/investors/PaymentsContainer'
+import ClaimsContainer from '../../containers/investors/ClaimsContainer'
 import InvestorNavigation from '../../components/investors/InvestorNavigation'
+import {BrowserRouter as Router, Route, Link, NavLink, Switch} from 'react-router-dom'
 
 class InvestorsView extends React.Component {
   constructor(props) {
@@ -17,19 +19,13 @@ class InvestorsView extends React.Component {
       <div>
       <h1>Investor Views Below</h1>
         <InvestorNavigation />
-        <h2>Investor Property View</h2>
-        <PropertiesContainer />
-        <h2>Investor Financials / Taxes View</h2>
-        <FinancialsContainer />
-        <h2>Investor Tenants View</h2>
-        <TenantsContainer />
-        <h2>Investor Maintenance View</h2>
-        <ProjectsContainer />
-        <h2>Investor User Profile View</h2>
-        <ProfileContainer />
-        <h2>Investor Payments View</h2>
-        <PaymentsContainer />
-        <h2>Investor Claim Management View</h2>
+        <Route path={`/investors/:investorId/properties`} component={PropertiesContainer} />
+        <Route path={`/investors/:investorId/financials`} component={FinancialsContainer} />
+        <Route path={`/investors/:investorId/tenants`} component={TenantsContainer} />
+        <Route path={`/investors/:investorId/projects`} component={ProjectsContainer} />
+        <Route path={`/investors/:investorId/profile`} component={ProfileContainer} />
+        <Route path={`/investors/:investorId/payments`} component={PaymentsContainer} />
+        <Route path={`/investors/:investorId/claims`} component={ClaimsContainer} />
       </div>
     );
   }

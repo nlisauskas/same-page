@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Claim from '../../components/investors/Claim'
+import Claim from '../../components/tenants/Claim'
 
 class ClaimsContainer extends Component {
     constructor(props){
@@ -22,8 +22,8 @@ class ClaimsContainer extends Component {
     render() {
         return (
             <div className="claims-container">
-            <h2>Investor Claim Management View</h2>
-            <p>This section displays all claims a property has had and allows for investor to view status of total loss agreed upon by insurer / adjuster, displays status of claim payment, displays status of restorative work related to claim, provides ETA on total claim resolution, and provides messaging platform for investors, tenants, contractors, insurers / adjusters to connect.</p>
+            <h2>Tenant Claim Management View</h2>
+            <p>This section displays all claims a property has had and allows for tenant to view status of total loss agreed upon by insurer / adjuster, displays status of claim payment, displays status of restorative work related to claim, provides ETA on total claim resolution, and provides messaging platform for investors, tenants, contractors, insurers / adjusters to connect.</p>
             {this.state.claims.map( claim => {
          return (<Claim claim={claim} key={claim.id} />)
      })}

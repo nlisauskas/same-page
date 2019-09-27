@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Tenant from '../../components/investors/Tenant'
+import UserProfile from '../../components/tenants/UserProfile'
 
-class TenantsContainer extends Component {
+class ProfileContainer extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -22,12 +22,12 @@ class TenantsContainer extends Component {
     render() {
         return (
             <div className="tenants-container">
-            <h2>Investor Tenants View</h2>
+            <h2>Tenant User Profile View</h2>
             {this.state.tenants.map( tenant => {
-         return (<Tenant tenant={tenant} key={tenant.id} />)
+         return (<UserProfile tenant={tenant} key={tenant.id} />)
      })}
             </div>
         )
     }
 }
-export default TenantsContainer;
+export default ProfileContainer;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Payment from '../../components/investors/Payment'
+import Payment from '../../components/insurers/Payment'
 
 class PaymentsContainer extends Component {
     constructor(props){
@@ -22,7 +22,7 @@ class PaymentsContainer extends Component {
     render() {
         return (
             <div className="payments-container">
-            <h2>Investor Payments View</h2>
+            <h2>Insurer Payments View</h2>
             {this.state.payments.map( payment => {
          return (<Payment payment={payment} key={payment.id} />)
      })}

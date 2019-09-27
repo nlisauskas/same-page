@@ -5,14 +5,17 @@ Rails.application.routes.draw do
       resources :projects do
         resources :properties
         resources :investors
+        resources :contractors
         resources :tenants
       end
       resources :expenses
+      resources :contractors
       resources :incomes
       resources :payments
       resources :properties
       resources :investors do
         resources :properties
+        resources :contractors
         resources :tenants
         resources :projects
         resources :payments

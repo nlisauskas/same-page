@@ -1,11 +1,10 @@
 import React from 'react';
-import PropertiesContainer from '../../containers/investors/PropertiesContainer'
-import FinancialsContainer from '../../containers/investors/FinancialsContainer'
-import TenantsContainer from '../../containers/investors/TenantsContainer'
-import ProfileContainer from '../../containers/investors/ProfileContainer'
-import ProjectsContainer from '../../containers/investors/ProjectsContainer'
-import PaymentsContainer from '../../containers/investors/PaymentsContainer'
-import InvestorNavigation from '../../components/investors/InvestorNavigation'
+import FinancialsContainer from '../../containers/insurers/FinancialsContainer'
+import ProfileContainer from '../../containers/insurers/ProfileContainer'
+import ClaimsContainer from '../../containers/insurers/ClaimsContainer'
+import PaymentsContainer from '../../containers/insurers/PaymentsContainer'
+import InsurerNavigation from '../../components/insurers/InsurerNavigation'
+import {BrowserRouter as Router, Route, Link, NavLink, Switch} from 'react-router-dom'
 
 class InsurersView extends React.Component {
   constructor(props) {
@@ -15,11 +14,12 @@ class InsurersView extends React.Component {
   render() {
     return (
       <div>
-      <h1>Insurer Views Below</h1>
-        <h2>Insurer Payments View</h2>
-        <h2>Insurer Financials / Taxes View</h2>
-        <h2>Insurer Claim Management View</h2>
-        <h2>Insurer User Profile View</h2>
+      <h1>Insurers' View Below</h1>
+      <InsurerNavigation />
+      <Route path={`/insurers/:insurerId/payments`} component={PaymentsContainer} />
+      <Route path={`/insurers/:insurerId/financials`} component={FinancialsContainer} />
+      <Route path={`/insurers/:insurerId/claims`} component={ClaimsContainer} />
+      <Route path={`/insurers/:insurerId/profile`} component={ProfileContainer} />
       </div>
     );
   }

@@ -1,11 +1,11 @@
 import React from 'react';
-import PropertiesContainer from '../../containers/investors/PropertiesContainer'
-import FinancialsContainer from '../../containers/investors/FinancialsContainer'
-import TenantsContainer from '../../containers/investors/TenantsContainer'
-import ProfileContainer from '../../containers/investors/ProfileContainer'
-import ProjectsContainer from '../../containers/investors/ProjectsContainer'
-import PaymentsContainer from '../../containers/investors/PaymentsContainer'
-import InvestorNavigation from '../../components/investors/InvestorNavigation'
+import FinancialsContainer from '../../containers/contractors/FinancialsContainer'
+import ProfileContainer from '../../containers/contractors/ProfileContainer'
+import ProjectsContainer from '../../containers/contractors/ProjectsContainer'
+import PaymentsContainer from '../../containers/contractors/PaymentsContainer'
+import ClaimsContainer from '../../containers/contractors/ClaimsContainer'
+import ContractorNavigation from '../../components/contractors/ContractorNavigation'
+import {BrowserRouter as Router, Route, Link, NavLink, Switch} from 'react-router-dom'
 
 class ContractorsView extends React.Component {
   constructor(props) {
@@ -16,11 +16,12 @@ class ContractorsView extends React.Component {
     return (
       <div>
       <h1>Contractor Views Below</h1>
-        <h2>Contractor Payments View</h2>
-        <h2>Contractor Financials / Taxes View</h2>
-        <h2>Contractor Jobs View</h2>
-        <h2>Contractor Claim Management View</h2>
-        <h2>Contractor User Profile View</h2>
+          <ContractorNavigation />
+          <Route path={`/contractors/:contractorId/payments`} component={PaymentsContainer} />
+          <Route path={`/contractors/:contractorId/financials`} component={FinancialsContainer} />
+          <Route path={`/contractors/:contractorId/projects`} component={ProjectsContainer} />
+          <Route path={`/contractors/:contractorId/claims`} component={ClaimsContainer} />
+          <Route path={`/contractors/:contractorId/profile`} component={ProfileContainer} />
       </div>
     );
   }

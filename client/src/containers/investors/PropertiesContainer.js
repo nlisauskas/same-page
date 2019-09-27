@@ -22,6 +22,7 @@ class PropertiesContainer extends Component {
     render() {
         return (
             <div className="properties-container">
+            <h2>Investor Property View</h2>
             {this.state.properties.map( property => {
          return (<Property property={property} key={property.id} />)
      })}

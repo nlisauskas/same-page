@@ -21,11 +21,10 @@ class FinancialsContainer extends Component {
     render() {
         return (
             <div className="financials-container">
-            <h2>Investor Financials / Taxes View</h2>
-              <p>Iterate through properties and show zestimate, cash flow to date, projected monthly cash flow, remaining months on mortgage, ROI if sold today, etc.</p>
-              <p>Total assets, total liabilities, net worth in real estate investments.</p>
-              <p>Charts showing all types of finances related to investor's properties.</p>
-              <p>Expense Management Section</p>
+            <h2>Contractor Financials / Taxes View</h2>
+              <p>Shows a contractor's finances (cash flow, profit by job, profit by type of job, etc. to give them actionable insights into their business.)</p>
+              <p>Charts showing all types of finances related to contractor's jobs.</p>
+              <p>Expense Management / Invoicing / Tax Section</p>
             </div>
         )
     }

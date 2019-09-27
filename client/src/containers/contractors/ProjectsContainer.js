@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Project from '../../components/investors/Project'
+import Project from '../../components/contractors/Project'
 
 class ProjectsContainer extends Component {
     constructor(props){
@@ -22,11 +22,12 @@ class ProjectsContainer extends Component {
     render() {
         return (
             <div className="projects-container">
-            <h2>Investor Maintenance View</h2>
+            <h2>Contractor Projects View</h2>
             {this.state.projects.map( project => {
          return (<Project project={project} key={project.id} />)
      })}
-     <p>This page shows details about all not started projects, ongoing projects, completed projects, which property they were for, which contractors worked on them, and a communication platform for the landlord, contractor, tenant, and insurer / adjuster (if applicable).</p>
+     <p>This page shows details about all not started projects, ongoing projects, completed projects, which property they were for, and a communication platform for the landlord, contractor, tenant, and insurer / adjuster (if applicable).</p>
+     <a href="#">View projects that are waiting on a quote / a contractor to work on them.</a>
      <a href="#">Create a new project. Form allows you to select a property, describe the issue, and open the project for quotes from preferred and other contractors.</a>
             </div>
         )
