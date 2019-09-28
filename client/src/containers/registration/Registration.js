@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-//import {signUp} from '../actions/userActions';
+import {signUp} from '../../actions/registerActions';
 
 class Registration extends Component {
   constructor(props) {
@@ -16,7 +16,8 @@ class Registration extends Component {
       gender: '',
       birthdate: 0,
       first_name: '',
-      last_name: ''
+      last_name: '',
+      profile_type: ''
   }
 };
 
@@ -29,7 +30,7 @@ class Registration extends Component {
 
   onSave(event) {
     event.preventDefault();
-    this.props.signupUser(this.state);
+    this.props.signUp(this.state);
   };
 
   render() {
@@ -69,12 +70,11 @@ class Registration extends Component {
               type="password"
               value={this.state.password_confirmation}
               onChange={this.onChange}/><br></br>
-            <label>Gender</label><br></br>
-              < input
-                name="gender"
-                label="gender"
-                value={this.state.gender}
-                onChange={this.onChange}/><br></br>
+              <label>Gender</label><br></br>
+              <select value={this.state.gender}>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select><br></br>
             <label>What type of user are you?</label><br></br>
             <select value={this.state.profile_type}>
               <option value="investor">Investor</option>
@@ -93,9 +93,8 @@ class Registration extends Component {
   }
 }
 
+ const mapDispatchToProps = (dispatch) => {
+   return { signUp: info => dispatch(signUp(info))}
+        };
 
-// const mapDispatchToProps = (dispatch) => {
-  // return { signupUser: userInfo => dispatch(signupUser(userInfo))}
-       // };
-
-export default Registration;
+export default connect(null, mapDispatchToProps)(Registration);

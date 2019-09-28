@@ -1,12 +1,29 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import ReactDOM from 'react-dom'
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+//import './stylesheets/index.css';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers';
+import { Provider } from 'react-redux';
 
-ReactDOM.render(<App />, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const store = createStore(
+  rootReducer,
+  compose(
+    applyMiddleware(thunk),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  )
+)
+    const render = () => {
+      fancyLog();
+      ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+  };
+
+    render();
+    store.subscribe(render);
+
+    function fancyLog() {
+      console.log("%c Lisauskas", "background: purple; color: #fff");
+      console.log(store.getState());
+    }
