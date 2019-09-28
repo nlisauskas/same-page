@@ -1,11 +1,11 @@
 import React from 'react';
-import PropertiesContainer from '../../containers/investors/PropertiesContainer'
-import FinancialsContainer from '../../containers/investors/FinancialsContainer'
-import TenantsContainer from '../../containers/investors/TenantsContainer'
-import ProfileContainer from '../../containers/investors/ProfileContainer'
-import ProjectsContainer from '../../containers/investors/ProjectsContainer'
-import PaymentsContainer from '../../containers/investors/PaymentsContainer'
-import InvestorNavigation from '../../components/investors/InvestorNavigation'
+import FinancialsContainer from '../../containers/adjusters/FinancialsContainer'
+import ProfileContainer from '../../containers/adjusters/ProfileContainer'
+import PaymentsContainer from '../../containers/adjusters/PaymentsContainer'
+import ClaimsContainer from '../../containers/adjusters/ClaimsContainer'
+import DocumentsContainer from '../../containers/adjusters/DocumentsContainer'
+import AdjusterNavigation from '../../components/adjusters/AdjusterNavigation'
+import {BrowserRouter as Router, Route, Link, NavLink, Switch} from 'react-router-dom'
 
 class AdjustersView extends React.Component {
   constructor(props) {
@@ -16,11 +16,12 @@ class AdjustersView extends React.Component {
     return (
       <div>
       <h1>Adjuster Views Below</h1>
-        <h2>Adjuster Payments View</h2>
-        <h2>Adjuster Financials / Taxes View</h2>
-        <h2>Adjuster Claim Management View</h2>
-        <h2>Adjuster Claim Documentation View</h2>
-        <h2>Adjuster User Profile View</h2>
+          <AdjusterNavigation />
+          <Route path={`/adjusters/:adjusterId/payments`} component={PaymentsContainer} />
+          <Route path={`/adjusters/:adjusterId/financials`} component={FinancialsContainer} />
+          <Route path={`/adjusters/:adjusterId/claims`} component={ClaimsContainer} />
+          <Route path={`/adjusters/:adjusterId/documentation`} component={DocumentsContainer} />
+          <Route path={`/adjusters/:adjusterId/profile`} component={ProfileContainer} />
       </div>
     );
   }
