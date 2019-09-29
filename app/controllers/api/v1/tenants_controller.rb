@@ -16,13 +16,17 @@ class TenantsController < ApplicationController
 
   # POST /tenants
   def create
+    if Tenant.find_by(:email => tenant_params[:email])
+      render json: "This account already exists", status: :unprocessable_entity
+    else
     @tenant = Tenant.new(tenant_params)
 
     if @tenant.save
-      render json: @tenant, status: :created, location: @tenant
+      render json: @tenant, status: :created
     else
       render json: @tenant.errors, status: :unprocessable_entity
     end
+  end
   end
 
   # PATCH/PUT /tenants/1
@@ -47,7 +51,7 @@ class TenantsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def tenant_params
-      params.require(:tenant).permit(:first_name, :last_name, :gender, :birthdate)
+      params.require(:tenant).permit(:first_name, :last_name, :email, :gender, :birthdate, :password_confirmation, :password)
     end
 end
 end

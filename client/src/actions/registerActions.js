@@ -2,7 +2,7 @@ import {post} from 'axios';
 
 export function signUp(info) {
   debugger
-  const url = `api/users`
+  const url = `api/v1/${info.profile_type}s`
   return(dispatch) => {
     dispatch({type: 'REGISTERING'});
     fetch(url, {
@@ -14,7 +14,7 @@ export function signUp(info) {
       }
     })
     .then(() => {
-        dispatch({type: 'REGISTER_SUCCESS'})
+        dispatch({type: 'REGISTER_SUCCESS', payload: info})
       })
     .catch(err => dispatch({type: 'REGISTER_ERROR', payload: err}));
   }

@@ -16,7 +16,7 @@ export default function registrationReducer(state = {
 
     case "REGISTER_SUCCESS":
       debugger // I think we return action.payload here.
-      return {loading: true, user: state.user, registerError: state.registerError, registerSuccess: true}
+      return {loading: true, user: action.payload, registerError: state.registerError, registerSuccess: true}
 
     case 'REGISTER_ERROR':
       return {loading: true, user: state.user, registerError: false, registerSuccess: state.registerSuccess}

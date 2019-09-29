@@ -13,11 +13,11 @@ class Registration extends Component {
       email: '',
       password: '',
       password_confirmation: '',
-      gender: '',
+      gender: 'male',
       birthdate: 0,
       first_name: '',
       last_name: '',
-      profile_type: ''
+      profile_type: 'investor'
   }
 };
 
@@ -71,12 +71,12 @@ class Registration extends Component {
               value={this.state.password_confirmation}
               onChange={this.onChange}/><br></br>
               <label>Gender</label><br></br>
-              <select value={this.state.gender}>
+              <select name="gender" value={this.state.gender} onChange={this.onChange}>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select><br></br>
             <label>What type of user are you?</label><br></br>
-            <select value={this.state.profile_type}>
+            <select name="profile_type" value={this.state.profile_type} onChange={this.onChange}>
               <option value="investor">Investor</option>
               <option value="tenant">Tenant</option>
               <option value="contractor">Contractor</option>

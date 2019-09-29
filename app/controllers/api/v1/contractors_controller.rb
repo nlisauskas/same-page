@@ -16,13 +16,17 @@ class ContractorsController < ApplicationController
 
   # POST /contractors
   def create
+    if Contractor.find_by(:email => contractor_params[:email])
+      render json: "This account already exists", status: :unprocessable_entity
+    else
     @contractor = Contractor.new(contractor_params)
 
     if @contractor.save
-      render json: @contractor, status: :created, location: @contractor
+      render json: @contractor, status: :created
     else
       render json: @contractor.errors, status: :unprocessable_entity
     end
+  end
   end
 
   # PATCH/PUT /contractors/1
@@ -47,7 +51,7 @@ class ContractorsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def contractor_params
-      params.require(:contractor).permit(:first_name, :last_name, :gender, :birthdate)
+      params.require(:contractor).permit(:first_name, :last_name, :email, :gender, :birthdate, :password_confirmation, :password)
     end
 end
 end
