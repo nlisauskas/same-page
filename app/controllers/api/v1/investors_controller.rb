@@ -1,6 +1,7 @@
 module Api::V1
 class InvestorsController < ApplicationController
   before_action :set_investor, only: [:show, :update, :destroy]
+  before_action :authenticate_investor,  only: [:index, :current, :update, :destroy]
   require 'pry'
 
   # GET /investors
@@ -42,6 +43,10 @@ class InvestorsController < ApplicationController
   # DELETE /investors/1
   def destroy
     @investor.destroy
+  end
+
+  def current
+    render json: current_investor
   end
 
   private

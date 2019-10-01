@@ -20,14 +20,15 @@ export function signUp(info) {
   }
 }
 
-// export function loginUser(credentials) {
-//   return(dispatch) => {
-//     dispatch({type: 'LOGGING_IN'}); // alter to logging_in
-//     post('/api/user_token', credentials)
-//        .then(response => {
-//          localStorage.setItem("jwt", response.data.token.token)
-//          dispatch({type: 'LOG_IN_SUCCESS', payload: response.data.id})
-//        })
-//     .catch(err => dispatch({type: 'LOG_IN_ERROR', payload: err}));
-//   }
-// }
+export function login(credentials) {
+  return(dispatch) => {
+    dispatch({type: 'LOGGING_IN'}); // alter to logging_in
+    post(`/api/v1/${credentials.profileType}_token`, credentials)
+       .then(response => {
+         debugger
+         localStorage.setItem("jwt", response.data.token.token)
+         dispatch({type: 'LOG_IN_SUCCESS', payload: response.data.id})
+       })
+    .catch(err => dispatch({type: 'LOG_IN_ERROR', payload: err}));
+  }
+}

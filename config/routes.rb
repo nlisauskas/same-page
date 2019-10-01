@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  post 'tenant_token' => 'tenant_token#create'
-  post 'contractor_token' => 'contractor_token#create'
-  post 'investor_token' => 'investor_token#create'
   namespace :api do
     namespace :v1 do
+      post 'tenant_token' => 'tenant_token#create'
+      post 'contractor_token' => 'contractor_token#create'
+      post 'investor_token' => 'investor_token#create'
       resources :projects do
         resources :properties
         resources :investors

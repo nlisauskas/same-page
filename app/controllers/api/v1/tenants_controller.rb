@@ -1,6 +1,7 @@
 module Api::V1
 class TenantsController < ApplicationController
   before_action :set_tenant, only: [:show, :update, :destroy]
+  before_action :authenticate_tenant,  only: [:index, :current, :update, :destroy]
 
   # GET /tenants
   def index
@@ -41,6 +42,10 @@ class TenantsController < ApplicationController
   # DELETE /tenants/1
   def destroy
     @tenant.destroy
+  end
+
+  def current
+    render json: current_tenant
   end
 
   private

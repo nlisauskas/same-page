@@ -1,6 +1,7 @@
 module Api::V1
 class ContractorsController < ApplicationController
   before_action :set_contractor, only: [:show, :update, :destroy]
+  before_action :authenticate_contractor,  only: [:index, :current, :update, :destroy]
 
   # GET /contractors
   def index
@@ -41,6 +42,10 @@ class ContractorsController < ApplicationController
   # DELETE /contractors/1
   def destroy
     @contractor.destroy
+  end
+
+  def current
+    render json: current_contractor
   end
 
   private

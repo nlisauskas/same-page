@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-//import {login} from '../actions/userActions';
+import {login} from '../../actions/registerActions';
 
 class Login extends Component {
   constructor(props) {
@@ -10,8 +10,7 @@ class Login extends Component {
     this.onSave = this.onSave.bind(this)
 
     this.state = {
-      credentials: {email: '', password: ''},
-      profileType: ''
+      credentials: {email: '', password: '', profileType: 'investor'}
     }
 
   }
@@ -19,10 +18,8 @@ class Login extends Component {
   onChange(event) {
     const field = event.target.name;
     const credentials = this.state.credentials;
-    const profileType = this.state.profileType;
     credentials[field] = event.target.value;
-    profileType[field] = event.target.value;
-    return this.setState({credentials: credentials, profileType: profileType});
+    return this.setState({credentials: credentials});
   };
 
   onSave(event) {
@@ -49,7 +46,7 @@ class Login extends Component {
             value={this.state.credentials.password}
             onChange={this.onChange}/>
             <label>What type of user are you?</label><br></br>
-            <select value={this.state.profileType}>
+            <select name="profileType" value={this.state.credentials.profileType} onChange={this.onChange}>
               <option value="investor">Investor</option>
               <option value="tenant">Tenant</option>
               <option value="contractor">Contractor</option>
@@ -66,8 +63,8 @@ class Login extends Component {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-  // return { loginUser: credentials => dispatch(loginUser(credentials))}
-       // };
+const mapDispatchToProps = (dispatch) => {
+  return { login: (credentials, profileType) => dispatch(login(credentials, profileType))}
+       };
 
-export default Login;
+export default connect(null, mapDispatchToProps)(Login);
